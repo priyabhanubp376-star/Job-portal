@@ -1,0 +1,133 @@
+.jobs-page {
+  padding: 30px;
+  background: #f4f6f9;
+  min-height: 100vh;
+}
+
+.jobs-page h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #1e293b;
+}
+
+/* ================= FILTERS ================= */
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.filters input,
+.filters select {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 220px;
+  font-size: 14px;
+  outline: none;
+  background: white;
+}
+
+.filters input:focus,
+.filters select:focus {
+  border-color: #1e293b;
+}
+
+/* ================= JOB GRID ================= */
+
+.job-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(280px, 1fr)
+  );
+  gap: 20px;
+}
+
+/* ================= JOB CARD ================= */
+
+.job-card {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  transition: 0.3s ease;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid transparent;
+}
+
+.job-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  border-left: 4px solid #1e293b;
+}
+
+.job-card h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #111827;
+}
+
+.company {
+  color: #64748b;
+  margin: 8px 0;
+  font-weight: 500;
+}
+
+/* ================= INFO ================= */
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.type {
+  background: #e2e8f0;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+/* ================= BUTTON ================= */
+
+.job-card button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #1e293b;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.job-card button:hover {
+  background: #334155;
+}
+
+.job-card button:disabled {
+  background: gray;
+  cursor: not-allowed;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filters input,
+  .filters select {
+    width: 100%;
+    max-width: 350px;
+  }
+}
