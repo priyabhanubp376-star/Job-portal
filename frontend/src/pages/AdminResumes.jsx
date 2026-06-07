@@ -5,7 +5,7 @@ function AdminResumes() {
   const [resumes, setResumes] = useState([]);
 
   const fetchResumes = () => {
-    axios.get("http://localhost:5000/api/resume/all")
+    axios.get("https://job-portal-lqyq.onrender.com/api/resume/all")
       .then(res => setResumes(res.data))
       .catch(err => console.log(err));
   };
@@ -30,7 +30,7 @@ function AdminResumes() {
             <p>{r.filename}</p>
 
             <a
-              href={`http://localhost:5000/uploads/${r.filename}`}
+              href={`https://job-portal-lqyq.onrender.com/uploads/${r.filename}`}
               target="_blank"
             >
               View Resume

@@ -14,7 +14,7 @@ function JobDetails() {
   const fetchJob = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/jobs/${id}`
+        `https://job-portal-lqyq.onrender.com/api/jobs/${id}`
       );
 
       setJob(res.data);

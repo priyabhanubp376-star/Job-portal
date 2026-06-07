@@ -18,7 +18,7 @@ function MyApplications() {
   const fetchApplications = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/applications/user/${user.id}`
+        `https://job-portal-lqyq.onrender.com/api/applications/user/${user.id}`
       );
 
       setApplications(res.data);
@@ -32,7 +32,7 @@ function MyApplications() {
   const deleteApplication = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/applications/delete/${id}`
+        `https://job-portal-lqyq.onrender.com/api/applications/delete/${id}`
       );
 
       fetchApplications();

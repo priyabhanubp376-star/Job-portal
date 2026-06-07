@@ -14,7 +14,7 @@ function ForgotPassword() {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:5000/api/auth/forgot-password",
+        "https://job-portal-lqyq.onrender.com/api/auth/forgot-password",
         { email }
       );
 

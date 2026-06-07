@@ -25,7 +25,7 @@ function Jobs() {
   const fetchJobs = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/jobs"
+        "https://job-portal-lqyq.onrender.com/api/jobs"
       );
       setJobs(res.data);
     } catch (err) {
@@ -36,7 +36,7 @@ function Jobs() {
   const fetchAppliedJobs = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/applications/user/${user.id}`
+        `https://job-portal-lqyq.onrender.com/api/applications/user/${user.id}`
       );
 
       const ids = res.data.map(
@@ -52,7 +52,7 @@ function Jobs() {
   const applyJob = async (jobId) => {
     try {
       await axios.post(
-        "http://localhost:5000/api/applications",
+        "https://job-portal-lqyq.onrender.com/api/applications",
         {
           userId: user.id,
           jobId,

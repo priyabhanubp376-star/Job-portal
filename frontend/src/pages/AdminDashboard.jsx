@@ -20,7 +20,7 @@ function AdminDashboard() {
   // ================= JOBS =================
   const fetchJobs = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/jobs");
+      const res = await axios.get("https://job-portal-lqyq.onrender.com/api/jobs");
       setJobs(res.data);
     } catch (err) {
       console.log(err);
@@ -31,7 +31,7 @@ function AdminDashboard() {
   try {
     if (editingId) {
       await axios.put(
-        `http://localhost:5000/api/jobs/${editingId}`,
+        `https://job-portal-lqyq.onrender.com/api/jobs/${editingId}`,
         {
           title,
           company,
@@ -43,7 +43,7 @@ function AdminDashboard() {
       alert("Job Updated ✅");
     } else {
       await axios.post(
-        "http://localhost:5000/api/jobs",
+        "https://job-portal-lqyq.onrender.com/api/jobs",
         {
           title,
           company,
@@ -69,7 +69,7 @@ function AdminDashboard() {
 //delete job
   const deleteJob = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/jobs/${id}`);
+      await axios.delete(`https://job-portal-lqyq.onrender.com/api/jobs/${id}`);
       alert("Job Deleted");
       fetchJobs();
     } catch (err) {
@@ -90,7 +90,7 @@ function AdminDashboard() {
   const fetchApplications = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/applications"
+        "https://job-portal-lqyq.onrender.com/api/applications"
       );
       setApplications(res.data);
     } catch (err) {
@@ -101,7 +101,7 @@ function AdminDashboard() {
   const updateStatus = async (id, status) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/applications/status/${id}`,
+        `https://job-portal-lqyq.onrender.com/api/applications/status/${id}`,
         { status }
       );
 
