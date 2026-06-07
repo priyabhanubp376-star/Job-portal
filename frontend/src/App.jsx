@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 
 import Home from "./pages/Home";
 import Jobs from "./pages/Jobs";
-import Login from "./pages/Login";
+import Login from "./pages/Login.jsx";
 import Register from "./pages/Register";
 import MyApplications from "./pages/MyApplications";
 import AdminDashboard from "./pages/AdminDashboard";
