@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const USERser = require("../models/user");
+const User = require("../models/user"); // ✅ FIXED (correct path + naming)
 
 
 // ========================
@@ -19,14 +19,14 @@ router.post("/register", async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newuser = await User.create({
+    const newUser = await User.create({
       name,
       email,
       password: hashedPassword,
       role: role || "user",
     });
 
-    res.json(user);
+    res.status(201).json(newUser);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -75,9 +75,9 @@ router.post("/login", async (req, res) => {
 // FORGOT PASSWORD
 // ========================
 router.post("/forgot-password", async (req, res) => {
-  const { email } = req.body;
-
   try {
+    const { email } = req.body;
+
     const user = await User.findOne({ email });
 
     if (!user) {
@@ -87,17 +87,16 @@ router.post("/forgot-password", async (req, res) => {
     const resetToken = Math.random().toString(36).substring(2);
 
     user.resetToken = resetToken;
-    user.resetTokenExpiry = Date.now() + 15 * 60 * 1000; // 15 min
+    user.resetTokenExpiry = Date.now() + 15 * 60 * 1000;
 
     await user.save();
 
     res.json({
       msg: "Reset token generated",
-      resetToken, // (demo purpose only)
+      resetToken,
     });
 
   } catch (err) {
-    console.log(err);
     res.status(500).json({ msg: "Server error" });
   }
 });
@@ -107,9 +106,9 @@ router.post("/forgot-password", async (req, res) => {
 // RESET PASSWORD
 // ========================
 router.post("/reset-password", async (req, res) => {
-  const { email, token, newPassword } = req.body;
-
   try {
+    const { email, token, newPassword } = req.body;
+
     const user = await User.findOne({ email });
 
     if (!user) {
@@ -135,7 +134,6 @@ router.post("/reset-password", async (req, res) => {
     res.json({ msg: "Password reset successful 🚀" });
 
   } catch (err) {
-    console.log(err);
     res.status(500).json({ msg: "Server error" });
   }
 });
