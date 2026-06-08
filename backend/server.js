@@ -6,11 +6,11 @@ const path = require("path");
 
 const app = express();
 
-// middlewares
+// Middlewares
 app.use(cors());
 app.use(express.json());
 
-// routes
+// Routes
 const authRoutes = require("./routes/authRoutes");
 const jobRoutes = require("./routes/jobRoutes");
 const applicationRoutes = require("./routes/applicationRoutes");
@@ -22,24 +22,30 @@ app.use("/api/jobs", jobRoutes);
 app.use("/api/applications", applicationRoutes);
 app.use("/api/resume", resumeRoutes);
 
-// ✅ STATIC FILES (IMPORTANT FIX)
+// Static files
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-// test route
+// Test route
 app.get("/", (req, res) => {
   res.send("Backend running 🚀");
 });
 
+// Debug logs
 console.log("MONGO_URI:", process.env.MONGO_URI);
 console.log("JWT_SECRET:", process.env.JWT_SECRET);
-// DB connect
+
+// DB Connect
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("MongoDB connected");
+    console.log("Connected DB Name:", mongoose.connection.name);
+    console.log("Connected Host:", mongoose.connection.host);
 
     app.listen(5000, () => {
       console.log("Server running on port 5000 🚀");
     });
   })
-  .catch((err) => console.log(err));
+  .catch((err) => {
+    console.log("MongoDB Error:", err);
+  });
