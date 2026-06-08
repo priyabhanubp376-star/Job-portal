@@ -16,6 +16,9 @@ function AdminLogin() {
         { email, password }
       );
 
+      console.log("ADMIN USER:", res.data.user);
+      console.log("ADMIN ROLE:", res.data.user.role);
+
       if (res.data.user.role !== "admin") {
         alert("Only Admin Allowed");
         return;
@@ -31,18 +34,18 @@ function AdminLogin() {
         res.data.token
       );
 
-      alert("Admin Login Successful");
+      alert("Admin Login Successful 🚀");
       navigate("/admin");
 
     } catch (err) {
-  console.log("ADMIN LOGIN ERROR:", err.response?.data);
+      console.log("ADMIN LOGIN ERROR:", err.response?.data);
 
-  alert(
-    err.response?.data?.msg ||
-    err.response?.data?.error ||
-    "Login Failed"
-  );
-}
+      alert(
+        err.response?.data?.msg ||
+        err.response?.data?.error ||
+        "Login Failed"
+      );
+    }
   };
 
   return (
