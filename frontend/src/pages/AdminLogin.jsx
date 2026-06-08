@@ -35,8 +35,14 @@ function AdminLogin() {
       navigate("/admin");
 
     } catch (err) {
-      alert("Login Failed");
-    }
+  console.log("ADMIN LOGIN ERROR:", err.response?.data);
+
+  alert(
+    err.response?.data?.msg ||
+    err.response?.data?.error ||
+    "Login Failed"
+  );
+}
   };
 
   return (
