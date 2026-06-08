@@ -29,7 +29,9 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.get("/", (req, res) => {
   res.send("Backend running 🚀");
 });
+
 console.log("MONGO_URI:", process.env.MONGO_URI);
+console.log("JWT_SECRET:", process.env.JWT_SECRET);
 // DB connect
 mongoose
   .connect(process.env.MONGO_URI)
